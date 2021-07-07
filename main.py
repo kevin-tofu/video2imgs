@@ -33,9 +33,12 @@ def save_all_frames(video_path, dir_path, basename, digit, ext='jpg'):
 
     loop = 0
     while True:
+        print(loop)
         ret, frame = cap.read()
         if ret:
-            cv2.imwrite('{}{}.{}'.format(base_path, str(loop).zfill(digit), ext), frame)
+            fname = '{}{}.{}'.format(base_path, str(loop).zfill(digit), ext)
+            print(fname)
+            cv2.imwrite(fname, frame)
             loop += 1
         else:
             return
@@ -43,6 +46,7 @@ def save_all_frames(video_path, dir_path, basename, digit, ext='jpg'):
 if __name__ == '__main__':
 
     import argparse
+    print("start")
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--video', '-V', type=str, default='video.mp4', help='')
@@ -54,3 +58,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     save_all_frames(args.video, args.dir_image, args.basename, args.digit, ext=args.fmt)
+
+    print("end")
