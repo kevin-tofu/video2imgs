@@ -10,7 +10,7 @@ import cv2
 def make_directory(path):
     print(path)
 
-    if os.path.exists(path):
+    if os.path.exists(path) == False:
         os.makedirs(path)
     else:
         #os.rmdir(path)
