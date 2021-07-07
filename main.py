@@ -21,7 +21,7 @@ def remove_files(directory):
     if os.path.exists(directory) == True:
         shutil.rmtree(directory)
     
-def save_all_frames(video_path, dir_path, basename, digit, ext='jpg'):
+def save_all_frames(video_path, dir_path, basename, digit, ext='jpg', skip = 0):
 
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
@@ -35,7 +35,7 @@ def save_all_frames(video_path, dir_path, basename, digit, ext='jpg'):
     while True:
         print(loop)
         ret, frame = cap.read()
-        if ret:
+        if ret and loop % (skip+1) == 0:
             fname = '{}{}.{}'.format(base_path, str(loop).zfill(digit), ext)
             print(fname)
             cv2.imwrite(fname, frame)
@@ -54,9 +54,11 @@ if __name__ == '__main__':
     parser.add_argument('--basename', '-BN', type=str, default='', help='')
     parser.add_argument('--digit', '-DG', type=int, default=8, help='')
     parser.add_argument('--fmt', '-F', type=str, default='jpg', help='')
+    parser.add_argument('--skip', '-S', type=int, default=0, help='')
 
     args = parser.parse_args()
 
-    save_all_frames(args.video, args.dir_image, args.basename, args.digit, ext=args.fmt)
+    #save_all_frames(args.video, args.dir_image, args.basename, args.digit, ext=args.fmt)
+    save_all_frames(args.video, args.dir_image, args.basename, args.digit, ext=args.fmt, skip=args.skip)
 
     print("end")
