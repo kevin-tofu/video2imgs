@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--video', '-V', type=str, default='video.mp4', help='')
-    parser.add_argument('--dir_image', '-D', type=str, default='./images', help='')
+    parser.add_argument('--dir_image', '-D', type=str, default='./images/', help='')
     parser.add_argument('--basename', '-BN', type=str, default='', help='')
     parser.add_argument('--digit', '-DG', type=int, default=8, help='')
     parser.add_argument('--fmt', '-F', type=str, default='jpg', help='')
