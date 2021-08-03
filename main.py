@@ -61,4 +61,8 @@ if __name__ == '__main__':
     #save_all_frames(args.video, args.dir_image, args.basename, args.digit, ext=args.fmt)
     save_all_frames(args.video, args.dir_image, args.basename, args.digit, ext=args.fmt, skip=args.skip)
 
+    
     print("end")
+
+
+
